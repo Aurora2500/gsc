@@ -69,6 +69,12 @@ func _process(delta):
 	if Input.is_action_pressed("camera_right"):
 		position.x += keyboard_pan_sensitivity
 	
+	position = vector2_clamp(
+		position,
+		Vector2(-x_size, -y_size),
+		Vector2(x_size, y_size)
+	)
+	
 	if Input.is_action_pressed("camera_zoom_in"):
 		current_zoom -= keyboard_zoom_sensitivity * delta
 		update_zoom()
@@ -76,6 +82,12 @@ func _process(delta):
 		current_zoom += keyboard_zoom_sensitivity * delta
 		update_zoom()
 
-func update_zoom():
+func update_zoom() -> void:
 	current_zoom = clamp(current_zoom, min_zoom, max_zoom)
 	zoom = Vector2(current_zoom, current_zoom)
+
+func vector2_clamp(target: Vector2, minclamp:Vector2, maxclamp:Vector2) -> Vector2:
+	return Vector2(
+		clamp(target.x, minclamp.x, maxclamp.x),
+		clamp(target.y, minclamp.y, maxclamp.y)
+	)
