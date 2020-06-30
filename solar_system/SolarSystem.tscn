@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://solar_system/yellow.png" type="Texture" id=1]
+[ext_resource path="res://solar_system/SolarSystem.gd" type="Script" id=2]
+
+[node name="SolarSystem" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="StarSprite" type="Sprite" parent="."]
+scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 1 )
