@@ -8,9 +8,14 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Node2D",
+"class": "SolarSystem",
+"language": "GDScript",
+"path": "res://solar_system/SolarSystem.gd"
+} ]
 _global_script_class_icons={
-
+"SolarSystem": ""
 }
 
 [application]
