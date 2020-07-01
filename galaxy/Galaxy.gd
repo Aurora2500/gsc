@@ -23,7 +23,7 @@ func _ready():
 	generate_galaxy()
 
 func generate_galaxy():
-	for _i in range(number_of_stars):
+	for i in range(number_of_stars):
 		# generate the coordinate for the solar system
 		var is_coliding = true
 		var coord
@@ -52,7 +52,8 @@ func generate_galaxy():
 		solar_systems.append(current_star)
 		current_star.position = coord
 		current_star.z_index = 1
-		links = links + current_star.link_to(linkable_systems(current_star), link_scene)
+		current_star.id = i
+		links = links + current_star.link_to_group(linkable_systems(current_star), link_scene)
 	pass
 
 func linkable_systems(target:Node2D):
@@ -95,4 +96,27 @@ func orientation(p: Vector2, q: Vector2, r: Vector2):
 	if val > 0:
 		return CLOCKWISE
 	return COUNTERCLOCKWISE
-	 
+
+func save():
+	var save_solar_systems = []
+	for ss in solar_systems:
+		save_solar_systems.append(ss.save())
+	var save_dict = {
+		"solar_systems": save_solar_systems
+	}
+	return save_dict
+
+func load_save(savedata):
+	# clear current scene
+	for node in get_children():
+		remove_child(node)
+		node.queue_free()
+	solar_systems.clear()
+	links.clear()
+	
+	# load the savedata
+	for solar_system_data in savedata.solar_systems:
+		var current_solar_system = \
+		SolarSystem.load_save(solar_system_data, solar_systems, link_scene)
+		add_child(current_solar_system)
+		solar_systems.append(current_solar_system)
