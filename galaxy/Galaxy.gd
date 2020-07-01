@@ -1,14 +1,16 @@
 extends Node2D
 
-export var number_of_stars = 100
-export var min_radius = 200
+var rng = RandomNumberGenerator.new()
+
+export var number_of_stars = 120
+export var min_radius = 500
 export var max_radius = 1500
 export var star_separation = 100
 # since it only needs to compare, it is more optimized to use squared
 onready var star_sep_squared = star_separation*star_separation
 export var tries = 200
 
-export var link_distance = 500
+export var link_distance = 300
 onready var link_distance_squared = link_distance*link_distance
 
 var solar_system_scene = preload("res://solar_system/SolarSystem.tscn")
@@ -17,6 +19,7 @@ var solar_systems = []
 var links = []
 
 func _ready():
+	rng.randomize()
 	generate_galaxy()
 
 func generate_galaxy():
@@ -28,8 +31,8 @@ func generate_galaxy():
 		while is_coliding and tries_as_far < tries:
 			tries_as_far += 1
 			
-			var dist = rand_range(min_radius, max_radius)
-			var rot = rand_range(0.0, TAU)
+			var dist = rng.randf_range(min_radius, max_radius)
+			var rot = rng.randf_range(0.0, TAU)
 			coord = Vector2(
 				dist * cos(rot),
 				dist * sin(rot)
