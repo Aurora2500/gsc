@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://galaxy/Galaxy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://galaxy/Camera.gd" type="Script" id=2]
 [ext_resource path="res://galaxy/Galaxy.gd" type="Script" id=3]
+[ext_resource path="res://user_interface/Pause.gd" type="Script" id=4]
 
 [node name="MainScene" type="Node2D"]
 
@@ -12,3 +13,30 @@ script = ExtResource( 3 )
 [node name="MainCamera" type="Camera2D" parent="."]
 current = true
 script = ExtResource( 2 )
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Pause" type="Control" parent="CanvasLayer"]
+pause_mode = 2
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Background" type="ColorRect" parent="CanvasLayer/Pause"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.145098 )
+
+[node name="Panel" type="Panel" parent="CanvasLayer/Pause"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -130.0
+margin_top = -245.5
+margin_right = 130.0
+margin_bottom = 245.5
