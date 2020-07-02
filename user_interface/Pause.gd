@@ -6,3 +6,8 @@ func _input(event):
 		get_tree().paused = new_pause_state
 		visible = new_pause_state
 
+
+func _on_ResumeButton_pressed():
+	get_tree().paused = false
+	visible = false
+
