@@ -21,7 +21,7 @@ func _ready():
 	rng.randomize()
 
 func generate_galaxy():
-	for _i in range(number_of_stars):
+	for i in range(number_of_stars):
 		# generate the coordinate for the solar system
 		var is_coliding = true
 		var coord
@@ -50,6 +50,7 @@ func generate_galaxy():
 		solar_systems.append(current_star)
 		current_star.position = coord
 		current_star.z_index = 1
+		current_star.id = i
 		current_star.link_to(linkable_systems(current_star), link_scene)
 
 func linkable_systems(target:Node2D):
@@ -65,7 +66,7 @@ func linkable_systems(target:Node2D):
 		for intersect_1 in solar_systems:
 			if other == intersect_1:
 				continue
-			for intersect_2 in intersect_1.linked_systems:
+			for intersect_2 in intersect_1.links:
 				if doIntersect(
 					target.position,
 					other.position,
