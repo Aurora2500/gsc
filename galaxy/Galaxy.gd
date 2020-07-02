@@ -95,4 +95,9 @@ func orientation(p: Vector2, q: Vector2, r: Vector2):
 	if val > 0:
 		return CLOCKWISE
 	return COUNTERCLOCKWISE
-	 
+
+func save():
+	pass
+
+func load_save(savedata):
+	pass

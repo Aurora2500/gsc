@@ -22,3 +22,9 @@ func link_to(others, link_scene):
 		link_obj.setup_positions(self.position, target.position)
 		links.append(link_obj)
 	return links
+
+func save():
+	pass
+
+func load_save():
+	pass
