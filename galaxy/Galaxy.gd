@@ -16,14 +16,12 @@ onready var link_distance_squared = link_distance*link_distance
 var solar_system_scene = preload("res://solar_system/SolarSystem.tscn")
 var link_scene = preload("res://solar_system/star_link/StarLink.tscn")
 var solar_systems = []
-var links = []
 
 func _ready():
 	rng.randomize()
-	generate_galaxy()
 
 func generate_galaxy():
-	for _i in range(number_of_stars):
+	for i in range(number_of_stars):
 		# generate the coordinate for the solar system
 		var is_coliding = true
 		var coord
@@ -52,8 +50,8 @@ func generate_galaxy():
 		solar_systems.append(current_star)
 		current_star.position = coord
 		current_star.z_index = 1
-		links = links + current_star.link_to(linkable_systems(current_star), link_scene)
-	pass
+		current_star.id = i
+		current_star.link_to(linkable_systems(current_star), link_scene)
 
 func linkable_systems(target:Node2D):
 	var linkable_systems_array = []
@@ -68,7 +66,7 @@ func linkable_systems(target:Node2D):
 		for intersect_1 in solar_systems:
 			if other == intersect_1:
 				continue
-			for intersect_2 in intersect_1.linked_systems:
+			for intersect_2 in intersect_1.links:
 				if doIntersect(
 					target.position,
 					other.position,
@@ -95,4 +93,22 @@ func orientation(p: Vector2, q: Vector2, r: Vector2):
 	if val > 0:
 		return CLOCKWISE
 	return COUNTERCLOCKWISE
-	 
+
+func save():
+	var ss_saves = []
+	for ss in solar_systems:
+		ss_saves.append(ss.save())
+	var save_dict = {
+		solar_systems = ss_saves
+	}
+	return save_dict
+
+func load_save(savedata):
+	for ss_savedata in savedata.solar_systems:
+		load_solar_system_save(ss_savedata)
+
+func load_solar_system_save(savedata):
+	var current_star = solar_system_scene.instance()
+	add_child(current_star)
+	solar_systems.append(current_star)
+	current_star.load_save(savedata)
