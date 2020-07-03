@@ -3,7 +3,6 @@
 [ext_resource path="res://game_management/GameManager.gd" type="Script" id=1]
 [ext_resource path="res://galaxy/Camera.gd" type="Script" id=2]
 
-
 [node name="MainScene" type="Node2D"]
 script = ExtResource( 1 )
 
