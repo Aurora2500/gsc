@@ -18,6 +18,7 @@ border_color = Color( 0.27451, 0.278431, 0.341176, 1 )
 
 [sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.172549, 0.188235, 0.247059, 1 )
+border_color = Color( 0.635294, 0.682353, 1, 1 )
 corner_detail = 1
 
 [resource]
