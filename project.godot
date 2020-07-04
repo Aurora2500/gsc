@@ -21,7 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Gsc"
-run/main_scene="res://galaxy/MainScene.tscn"
+run/main_scene="res://game_management/MainScene.tscn"
 config/icon="res://icon.png"
 
 [display]
