@@ -10,3 +10,6 @@ func setup_positions(start: Vector2, end: Vector2):
 	add_point(Vector2.ZERO)
 	add_point(start - end)
 	z_as_relative = false
+
+func distance():
+	return position.distance_to(get_point_position(1))
