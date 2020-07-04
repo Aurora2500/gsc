@@ -82,7 +82,19 @@ margin_left = 487.0
 margin_top = 257.0
 margin_right = 535.0
 margin_bottom = 283.0
+rect_pivot_offset = Vector2( 24, 19.5565 )
 text = "Save"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DeleteButton" type="Button" parent="."]
+margin_left = 419.0
+margin_top = 257.0
+margin_right = 479.0
+margin_bottom = 283.0
+rect_pivot_offset = Vector2( 24, 19.5565 )
+text = "Delete"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -105,3 +117,4 @@ theme = ExtResource( 2 )
 [connection signal="pressed" from="NewSaveButton" to="." method="_on_NewSaveButton_pressed"]
 [connection signal="pressed" from="CancelButton" to="." method="_on_CancelButton_pressed"]
 [connection signal="pressed" from="OverwriteSaveButton" to="." method="_on_OverwriteSaveButton_pressed"]
+[connection signal="pressed" from="DeleteButton" to="." method="_on_DeleteButton_pressed"]

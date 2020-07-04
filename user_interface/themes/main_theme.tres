@@ -9,7 +9,6 @@
 [ext_resource path="res://user_interface/styles/lineedit_style_focus.tres" type="StyleBox" id=7]
 [ext_resource path="res://user_interface/styles/panel_style.tres" type="StyleBox" id=8]
 
-
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.27451, 0.278431, 0.341176, 1 )
 border_width_left = 6

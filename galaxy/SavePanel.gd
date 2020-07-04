@@ -32,3 +32,9 @@ func _on_OverwriteSaveButton_pressed():
 func CloseConfirmPopup():
 	get_node("ConfirmPopup").queue_free()
 	
+
+func _on_DeleteButton_pressed():
+	var confirm = load("res://user_interface/scenes/ConfirmPopup.tscn").instance()
+	confirm.get_node("Label").text = "Are you sure you want\nto delete this save?"
+	add_child(confirm)
+	get_node("ConfirmPopup").connect("CloseConfirmPopup", self, "CloseConfirmPopup")
