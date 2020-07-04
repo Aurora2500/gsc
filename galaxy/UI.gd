@@ -21,8 +21,20 @@ func _on_SaveButton_pressed():
 	SecondaryWindowOpen = true
 	var save_menu = load("res://user_interface/scenes/SaveScreen.tscn").instance()
 	add_child(save_menu)
-	get_node("SaveMenu").connect("CloseSaveMenu", self, "CloseSaveMenu")
+	get_node("SaveMenu").connect("CloseSaveMenu", self, "close_save_menu")
 	
-func CloseSaveMenu():
+func close_save_menu():
 	get_node("SaveMenu").queue_free()
 	SecondaryWindowOpen = false
+
+
+func confirmation_popup(input_text, source):
+	var confirm = load("res://user_interface/scenes/ConfirmPopup.tscn").instance()
+	confirm.get_node("Label").text = input_text
+	add_child(confirm)
+	get_node("ConfirmPopup").connect("Cancel", self, "close_confirm_popup")
+	get_node("ConfirmPopup").connect("Confirm", source, "handle_confirm")
+	
+
+func close_confirm_popup():
+	get_node("ConfirmPopup").queue_free()

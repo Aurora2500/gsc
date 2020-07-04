@@ -19,10 +19,12 @@ __meta__ = {
 }
 
 [node name="Label" type="Label" parent="."]
-margin_left = 17.2992
-margin_top = 15.6577
-margin_right = 194.299
-margin_bottom = 58.6577
+margin_left = 8.0
+margin_top = 13.0
+margin_right = 202.0
+margin_bottom = 59.0
+align = 1
+autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }

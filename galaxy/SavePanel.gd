@@ -1,12 +1,39 @@
 extends Panel
 
 signal CloseSaveMenu
-const ListItem = preload("res://user_interface/scenes/ListItem.tscn")
+var saves = []
+var current_selection = -1
+var button_ = ""
+
+
+func _ready():
+	refresh_saves()
+
 
 func _input(event):
 	if event.is_action_pressed("pause"):
 		_on_CancelButton_pressed()
 
+
+func refresh_saves():
+	while $ItemList.get_item_count() > 0:
+		$ItemList.remove_item(0)
+	for save_name in saves:
+		$ItemList.add_item(save_name)
+
+
+func add_new_save(save_name):
+	saves.append(save_name)
+	refresh_saves()
+
+func delete_save(index):
+	$ItemList.remove_item(index)
+
+func load_save():
+	pass
+	
+func overwrite_save():
+	pass
 
 func _on_CancelButton_pressed():
 	get_node("SaveNameInput").text = ""
@@ -16,25 +43,27 @@ func _on_CancelButton_pressed():
 func _on_NewSaveButton_pressed():
 	var new_save_name = get_node("SaveNameInput").text
 	if new_save_name != "":
-		var new_save = ListItem.instance()
-		new_save.text = "  " + new_save_name
-		new_save.rect_min_size = Vector2(310, 35)
-		$ScrollContainer/VBoxContainer.add_child(new_save)
+		add_new_save(new_save_name)
 
 
 func _on_OverwriteSaveButton_pressed():
-	var confirm = load("res://user_interface/scenes/ConfirmPopup.tscn").instance()
-	confirm.get_node("Label").text = "Are you sure you want\nto overwrite this save?"
-	add_child(confirm)
-	get_node("ConfirmPopup").connect("CloseConfirmPopup", self, "CloseConfirmPopup")
+	button_ = "S"
+	if current_selection > -1:
+		get_parent().confirmation_popup("Are you sure you want to overwrite this save?", self)
+			
 	
-
-func CloseConfirmPopup():
-	get_node("ConfirmPopup").queue_free()
-	
-
 func _on_DeleteButton_pressed():
-	var confirm = load("res://user_interface/scenes/ConfirmPopup.tscn").instance()
-	confirm.get_node("Label").text = "Are you sure you want\nto delete this save?"
-	add_child(confirm)
-	get_node("ConfirmPopup").connect("CloseConfirmPopup", self, "CloseConfirmPopup")
+	button_ = "D"
+	if current_selection > -1:
+		get_parent().confirmation_popup("Are you sure you want to delete this save?", self)
+		
+
+func handle_confirm():
+	if button_ == "D":
+		delete_save(current_selection)
+	get_parent().close_confirm_popup()
+
+
+func _on_ItemList_item_selected(index):
+	current_selection = index
+
