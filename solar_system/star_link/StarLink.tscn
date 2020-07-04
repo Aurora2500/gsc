@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://solar_system/star_link/StarLink.gd" type="Script" id=1]
+
+[node name="StarLink" type="Line2D"]
+points = PoolVector2Array( 0, 0, 300, 0 )
+width = 2.0
+default_color = Color( 1, 1, 0, 1 )
+script = ExtResource( 1 )
