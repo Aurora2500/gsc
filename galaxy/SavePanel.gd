@@ -3,7 +3,8 @@ extends Panel
 signal CloseSaveMenu
 var saves = []
 var current_selection = -1
-var button_ = ""
+var current_action = -1
+enum actions {SAVE, DELETE}
 
 
 func _ready():
@@ -28,6 +29,7 @@ func add_new_save(save_name):
 
 func delete_save(index):
 	$ItemList.remove_item(index)
+	saves.remove(index)
 
 func load_save():
 	pass
@@ -47,19 +49,19 @@ func _on_NewSaveButton_pressed():
 
 
 func _on_OverwriteSaveButton_pressed():
-	button_ = "S"
+	current_action = actions.SAVE
 	if current_selection > -1:
 		get_parent().confirmation_popup("Are you sure you want to overwrite this save?", self)
 			
 	
 func _on_DeleteButton_pressed():
-	button_ = "D"
+	current_action = actions.DELETE
 	if current_selection > -1:
 		get_parent().confirmation_popup("Are you sure you want to delete this save?", self)
 		
 
 func handle_confirm():
-	if button_ == "D":
+	if current_action == actions.DELETE:
 		delete_save(current_selection)
 	get_parent().close_confirm_popup()
 
