@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://user_interface/styles/button_style_hover.tres" type="StyleBox" id=1]
+[ext_resource path="res://user_interface/styles/panel_style.tres" type="StyleBox" id=2]
+[ext_resource path="res://user_interface/styles/button_style_pressed.tres" type="StyleBox" id=3]
+
+[sub_resource type="Theme" id=1]
+Button/colors/font_color = Color( 0.88, 0.88, 0.88, 1 )
+Button/colors/font_color_disabled = Color( 0.9, 0.9, 0.9, 0.2 )
+Button/colors/font_color_hover = Color( 0.94, 0.94, 0.94, 1 )
+Button/colors/font_color_pressed = Color( 1, 1, 1, 1 )
+Button/constants/hseparation = 5
+Button/fonts/font = null
+Button/styles/disabled = null
+Button/styles/focus = ExtResource( 3 )
+Button/styles/hover = ExtResource( 1 )
+Button/styles/normal = ExtResource( 2 )
+Button/styles/pressed = ExtResource( 3 )
+
+[node name="Button" type="Button"]
+margin_left = 506.895
+margin_top = 285.742
+margin_right = 813.895
+margin_bottom = 311.742
+theme = SubResource( 1 )
+align = 0
+__meta__ = {
+"_edit_use_anchors_": false
+}

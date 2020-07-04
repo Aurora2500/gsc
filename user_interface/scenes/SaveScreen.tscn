@@ -1,0 +1,115 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://galaxy/SavePanel.gd" type="Script" id=1]
+[ext_resource path="res://user_interface/themes/main_theme.tres" type="Theme" id=2]
+
+[node name="SaveMenu" type="Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -308.0
+margin_top = -192.0
+margin_right = 308.0
+margin_bottom = 192.0
+theme = ExtResource( 2 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="SaveNameInput" type="LineEdit" parent="."]
+margin_left = 25.0
+margin_top = 290.0
+margin_right = 350.0
+margin_bottom = 320.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NewSaveButton" type="Button" parent="."]
+margin_left = 25.0
+margin_top = 330.0
+margin_right = 106.0
+margin_bottom = 358.0
+text = "New Save"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CancelButton" type="Button" parent="."]
+margin_left = 527.0
+margin_top = 330.0
+margin_right = 591.0
+margin_bottom = 358.0
+text = "Back"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 30.0
+margin_top = 265.0
+margin_right = 253.0
+margin_bottom = 285.0
+text = "Create New Save"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_left = 375.0
+margin_top = 25.0
+margin_right = 591.0
+margin_bottom = 250.0
+text = "[save info]"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LoadButton" type="Button" parent="."]
+margin_left = 543.0
+margin_top = 257.0
+margin_right = 591.0
+margin_bottom = 283.0
+text = "Load"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="OverwriteSaveButton" type="Button" parent="."]
+margin_left = 487.0
+margin_top = 257.0
+margin_right = 535.0
+margin_bottom = 283.0
+rect_pivot_offset = Vector2( 24, 19.5565 )
+text = "Save"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="DeleteButton" type="Button" parent="."]
+margin_left = 419.0
+margin_top = 257.0
+margin_right = 479.0
+margin_bottom = 283.0
+rect_pivot_offset = Vector2( 24, 19.5565 )
+text = "Delete"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ItemList" type="ItemList" parent="."]
+margin_left = 25.0
+margin_top = 25.0
+margin_right = 350.0
+margin_bottom = 250.0
+rect_min_size = Vector2( 325, 225 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="NewSaveButton" to="." method="_on_NewSaveButton_pressed"]
+[connection signal="pressed" from="CancelButton" to="." method="_on_CancelButton_pressed"]
+[connection signal="pressed" from="OverwriteSaveButton" to="." method="_on_OverwriteSaveButton_pressed"]
+[connection signal="pressed" from="DeleteButton" to="." method="_on_DeleteButton_pressed"]
+[connection signal="item_selected" from="ItemList" to="." method="_on_ItemList_item_selected"]
