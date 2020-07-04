@@ -19,7 +19,7 @@ func _on_ResumeButton_pressed():
 
 func _on_SaveButton_pressed():
 	SecondaryWindowOpen = true
-	var save_menu = load("res://user_interface/SaveScreen.tscn").instance()
+	var save_menu = load("res://user_interface/scenes/SaveScreen.tscn").instance()
 	add_child(save_menu)
 	get_node("SaveMenu").connect("CloseSaveMenu", self, "CloseSaveMenu")
 	

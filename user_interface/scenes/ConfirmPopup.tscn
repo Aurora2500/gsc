@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://user_interface/fonts/ConfirmPopup.gd" type="Script" id=1]
+[ext_resource path="res://user_interface/themes/main_theme.tres" type="Theme" id=2]
+
+[node name="ConfirmPopup" type="Panel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -105.5
+margin_top = -58.0
+margin_right = 105.5
+margin_bottom = 58.0
+theme = ExtResource( 2 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 17.2992
+margin_top = 15.6577
+margin_right = 194.299
+margin_bottom = 58.6577
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="YesButton" type="Button" parent="."]
+margin_left = 50.0
+margin_top = 70.0
+margin_right = 86.0
+margin_bottom = 96.0
+text = "Yes"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CancelButton" type="Button" parent="."]
+margin_left = 100.0
+margin_top = 70.0
+margin_right = 163.0
+margin_bottom = 96.0
+text = "Cancel"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="YesButton" to="." method="_on_YesButton_pressed"]
+[connection signal="pressed" from="CancelButton" to="." method="_on_CancelButton_pressed"]
