@@ -1,6 +1,9 @@
 extends Panel
 
 signal CloseSaveMenu
+
+const save_path := "user://saves"
+
 var saves = []
 var current_selection = -1
 var current_action = -1
@@ -17,19 +20,38 @@ func _input(event):
 
 
 func refresh_saves():
+	# remove last saves
 	while $ItemList.get_item_count() > 0:
 		$ItemList.remove_item(0)
+	saves.clear()
+	
+	# refresh saves
+	var save_dir := Directory.new()
+	if save_dir.dir_exists(save_path) == false:
+		save_dir.make_dir_recursive(save_path)
+	save_dir.open(save_path)
+	save_dir.list_dir_begin(true, true)
+	while true:
+		var file_name := save_dir.get_next()
+		if file_name == "":
+			break
+		saves.append(file_name)
+	# show saves
 	for save_name in saves:
 		$ItemList.add_item(save_name)
 
-
 func add_new_save(save_name):
-	saves.append(save_name)
+	var save_file := File.new()
+	save_file.open(save_path + "/" + save_name + ".json", 2) # 2 is write
+	save_file.close()
 	refresh_saves()
 
 func delete_save(index):
-	$ItemList.remove_item(index)
-	saves.remove(index)
+	var save_dir := Directory.new()
+	save_dir.open(save_path)
+	var save_name = saves[index]
+	save_dir.remove(save_name)
+	refresh_saves()
 
 func load_save():
 	pass
