@@ -14,7 +14,7 @@ export var link_distance = 300
 onready var link_distance_squared = link_distance*link_distance
 
 var solar_system_scene = preload("res://solar_system/SolarSystem.tscn")
-var link_scene = preload("res://solar_system/star_link/StarLink.tscn")
+var link_scene = preload("res://star_link/StarLink.tscn")
 var solar_systems = []
 
 func _ready():

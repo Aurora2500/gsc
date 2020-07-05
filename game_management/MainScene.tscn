@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://game_management/GameManager.gd" type="Script" id=1]
-[ext_resource path="res://galaxy/Camera.gd" type="Script" id=3]
+[ext_resource path="res://game_management/Camera.gd" type="Script" id=3]
 [ext_resource path="res://user_interface/themes/main_theme.tres" type="Theme" id=5]
 [ext_resource path="res://user_interface/scripts/UI.gd" type="Script" id=6]
 
