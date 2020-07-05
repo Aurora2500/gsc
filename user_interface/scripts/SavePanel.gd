@@ -53,10 +53,10 @@ func delete_save(index):
 	save_dir.remove(save_name)
 	refresh_saves()
 
-func load_save():
+func load_save(index):
 	pass
 	
-func overwrite_save():
+func overwrite_save(index):
 	pass
 
 func _on_CancelButton_pressed():
@@ -85,9 +85,14 @@ func _on_DeleteButton_pressed():
 func handle_confirm():
 	if current_action == actions.DELETE:
 		delete_save(current_selection)
+	if current_action == actions.SAVE:
+		overwrite_save(current_selection)
 	get_parent().close_confirm_popup()
 
 
 func _on_ItemList_item_selected(index):
 	current_selection = index
 
+
+func _on_LoadButton_pressed():
+	load_save(current_selection)
