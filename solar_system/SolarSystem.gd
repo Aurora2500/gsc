@@ -4,6 +4,7 @@ class_name SolarSystem
 
 var id: int
 
+# key: other solar system; value: the link between them
 var links = {}
 
 func _ready():

@@ -9,12 +9,18 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node",
+"class": "Pathfinder",
+"language": "GDScript",
+"path": "res://game_management/Pathfinding.gd"
+}, {
 "base": "Node2D",
 "class": "SolarSystem",
 "language": "GDScript",
 "path": "res://solar_system/SolarSystem.gd"
 } ]
 _global_script_class_icons={
+"Pathfinder": "",
 "SolarSystem": ""
 }
 
