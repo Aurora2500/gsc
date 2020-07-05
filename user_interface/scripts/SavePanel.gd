@@ -40,10 +40,18 @@ func refresh_saves():
 	for save_name in saves:
 		$ItemList.add_item(save_name)
 
-func add_new_save(save_name):
+func get_save_data():
+	return get_tree().current_scene.save()
+
+func save_to_file(filename: String):
 	var save_file := File.new()
-	save_file.open(save_path + "/" + save_name + ".json", 2) # 2 is write
+	save_file.open(save_path + "/" + filename, 2) # 2 is write
+	var save_data = get_save_data()
+	save_file.store_string(to_json(save_data))
 	save_file.close()
+
+func add_new_save(save_name):
+	save_to_file(save_name)
 	refresh_saves()
 
 func delete_save(index):
@@ -54,10 +62,16 @@ func delete_save(index):
 	refresh_saves()
 
 func load_save(index):
-	pass
+	var save_name = saves[index]
+	var save_file := File.new()
+	save_file.open(save_path + "/" + save_name, 1) # 1 is read
+	var save_content = parse_json(save_file.get_as_text())
+	get_tree().current_scene.load_save(save_content)
 	
+
 func overwrite_save(index):
-	pass
+	var save_name = saves[index]
+	save_to_file(save_name)
 
 func _on_CancelButton_pressed():
 	get_node("SaveNameInput").text = ""
