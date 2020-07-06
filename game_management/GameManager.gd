@@ -1,6 +1,6 @@
 extends Node
 
-const galaxy_scene = preload("res://galaxy/Galaxy.tscn")
+const galaxy_scene = preload("res://game_content/galaxy/Galaxy.tscn")
 var current_galaxy: Node2D
 
 var pathfinder

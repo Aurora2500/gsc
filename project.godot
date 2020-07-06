@@ -17,7 +17,7 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "SolarSystem",
 "language": "GDScript",
-"path": "res://solar_system/SolarSystem.gd"
+"path": "res://game_content/solar_system/SolarSystem.gd"
 } ]
 _global_script_class_icons={
 "Pathfinder": "",
