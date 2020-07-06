@@ -3,6 +3,7 @@ extends Node2D
 class_name SolarSystem
 
 var id: int
+var ss_name: String
 
 # key: other solar system; value: the link between them
 var links = {}
@@ -32,6 +33,7 @@ func save():
 	
 	var save_dict = {
 		id = id,
+		name = ss_name,
 		position = [position.x, position.y],
 		linked_system_ids = linked_system_ids
 	}
@@ -39,6 +41,7 @@ func save():
 
 func load_save(savedata):
 	id = savedata.id
+	ss_name = savedata.name
 	position = Vector2(savedata.position[0], savedata.position[1])
 	var to_link_with = []
 	var list_of_lesser_ss = get_parent().solar_systems
