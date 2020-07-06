@@ -49,7 +49,6 @@ func generate_galaxy():
 		add_child(current_star)
 		solar_systems.append(current_star)
 		current_star.position = coord
-		current_star.z_index = 1
 		current_star.id = i
 		current_star.link_to(linkable_systems(current_star), link_scene)
 

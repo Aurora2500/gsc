@@ -7,6 +7,9 @@ var id: int
 # key: other solar system; value: the link between them
 var links = {}
 
+func _init():
+	z_index = 1
+
 func _ready():
 	pass
 
