@@ -2,11 +2,14 @@ extends Node2D
 
 class_name SolarSystem
 
+const star_link_scene = preload("res://game_content/star_link/StarLink.tscn")
+
 var id: int
 var ss_name: String
 
 # key: other solar system; value: the link between them
 var links = {}
+var planets: Array
 
 func _init():
 	z_index = 1
@@ -17,9 +20,9 @@ func _ready():
 func linked_with(other):
 	return links.has(other)
 
-func link_to(others, link_scene):
+func link_to(others):
 	for target in others:
-		var link_obj = link_scene.instance()
+		var link_obj = star_link_scene.instance()
 		target.add_child(link_obj)
 		link_obj.setup_positions(self.position, target.position)
 		links[target] = link_obj
@@ -49,4 +52,4 @@ func load_save(savedata):
 	while (not savedata.linked_system_ids.empty()) \
 	and savedata.linked_system_ids.front() < id:
 		to_link_with.append(list_of_lesser_ss[savedata.linked_system_ids.pop_front()])
-	link_to(to_link_with, get_parent().link_scene)
+	link_to(to_link_with)

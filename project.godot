@@ -9,6 +9,16 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node2D",
+"class": "Galaxy",
+"language": "GDScript",
+"path": "res://game_content/galaxy/Galaxy.gd"
+}, {
+"base": "Node",
+"class": "GalaxyFactory",
+"language": "GDScript",
+"path": "res://game_content/galaxy/GalaxyFactory.gd"
+}, {
 "base": "Node",
 "class": "Pathfinder",
 "language": "GDScript",
@@ -18,10 +28,20 @@ _global_script_classes=[ {
 "class": "SolarSystem",
 "language": "GDScript",
 "path": "res://game_content/solar_system/SolarSystem.gd"
+}, {
+"base": "Line2D",
+"class": "StarLink",
+"language": "GDScript",
+"path": "res://game_content/star_link/StarLink.gd"
 } ]
 _global_script_class_icons={
+"Galaxy": "",
+"GalaxyFactory": "",
 "Pathfinder": "",
-"SolarSystem": ""
+"Planet": "",
+"PlanetFactory": "",
+"SolarSystem": "",
+"StarLink": ""
 }
 
 [application]

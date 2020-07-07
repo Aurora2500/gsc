@@ -1,5 +1,6 @@
 extends Line2D
 
+class_name StarLink
 
 func _ready():
 	pass

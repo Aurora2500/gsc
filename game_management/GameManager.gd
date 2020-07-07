@@ -1,15 +1,17 @@
 extends Node
 
-const galaxy_scene = preload("res://game_content/galaxy/Galaxy.tscn")
-var current_galaxy: Node2D
+var current_galaxy: Galaxy
+var galaxy_factory: GalaxyFactory
 
 var pathfinder
 
 func _ready():
 	# galaxy
-	current_galaxy = galaxy_scene.instance()
+	galaxy_factory = GalaxyFactory.new()
+	current_galaxy = galaxy_factory.get_galaxy()
+	galaxy_factory.generate_galaxy(current_galaxy)
 	add_child(current_galaxy)
-	current_galaxy.generate_galaxy()
+	galaxy_factory.generate_galaxy(current_galaxy)
 	
 	# PathFinder
 	pathfinder = Pathfinder.new()
@@ -23,6 +25,5 @@ func load_save(savedata):
 	current_galaxy.queue_free()
 	
 	# load
-	current_galaxy = galaxy_scene.instance()
+	current_galaxy = galaxy_factory.load_save(savedata)
 	add_child(current_galaxy)
-	current_galaxy.load_save(savedata)
